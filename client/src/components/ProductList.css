@@ -40,13 +40,13 @@
   font-size: 1.15rem;
 }
 
-.card-body > div > a > i {
+.card-body > div > i {
   cursor: pointer;
   color: #222;
   transition: 0.3s;
 }
 
-.card-body > div > a > i:hover {
+.card-body > div > i:hover {
   color: #007bff;
   transition: 0.3s;
 }

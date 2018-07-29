@@ -1,10 +1,17 @@
-import { FETCH_PRODUCT } from '../../types'
+import { FETCH_PRODUCT, ADD_TO_CART } from '../../types'
 import api from '../../services/api'
 
 const fetchProduct = (products) => {
   return {
     type: FETCH_PRODUCT,
     payload: products
+  }
+}
+
+const addProduct = (product) => {
+  return {
+    type: ADD_TO_CART,
+    payload: product
   }
 }
 
@@ -16,3 +23,8 @@ export const getProducts = () => {
     })
   }
 }
+
+export const addProductToCart = product => {
+  return dispatch => dispatch(addProduct(product))
+}
+

@@ -4,4 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; 
+  background-color: #efefef;
+}
+
+.home > div {
+  margin-top: 25vh;
 }

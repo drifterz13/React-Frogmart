@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import './ProductList.css'
 
-const ProductList = ({product}) => {
+const ProductList = ({product, ...props}) => {
   const { productName, imageUrl, price } = product
   return (
     <div className='product-list col-md-4 col-sm-12'>
@@ -15,9 +14,7 @@ const ProductList = ({product}) => {
         <div className='card-body'>
           <div>
             <span className='lead'>{productName}</span>
-            <Link to='/cart'>
-              <i className="fas fa-cart-plus"></i>
-            </Link>
+            <i onClick={() => props.addToCart(product)} className="fas fa-cart-plus"></i>
           </div>
           <span>{price} THB</span>
         </div>

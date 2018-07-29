@@ -5,7 +5,7 @@ import './Nav.css'
 class Nav extends Component {
   render() {
     return (
-      <nav className="navbar navbar-light">
+      <nav className="navbar navbar-light fixed-top">
         <div className='container'>
           <Link className="navbar-brand" to="/">
             <i className="fas fa-frog mr-2"></i>

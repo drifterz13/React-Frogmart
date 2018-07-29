@@ -1,0 +1,26 @@
+.cart-wrapped > img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.cart-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.cart-detail > div > p {
+  color: #777;
+}
+
+.cart-detail > p {
+  color: #f24f3a;
+  font-size: 14px;
+}
+
+.cart-detail p {
+  font-weight: 500;
+  text-align: right;
+}

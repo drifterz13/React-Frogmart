@@ -5,8 +5,15 @@ import Product from './Product'
 import Cart from './Cart'
 import Nav from './Nav'
 
+const divStyle = {
+  height: '100vh',
+  maxHeight: '100%',
+  overflow: 'auto',
+  backgroundColor: '#efefef'
+}
+
 const Main = (props) => (
-  <div>
+  <div style={divStyle}>
     <Nav />
     <Switch>
       <Route exact path='/' render={() => <Home {...props} />} />
