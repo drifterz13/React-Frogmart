@@ -1,0 +1,21 @@
+nav.navbar {
+  background-color: #fff !important;
+  line-height: 1;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 40px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.navbar-nav > li {
+  margin: 0 25px;
+}
+
+.navbar-brand > i {
+  background-color: #222;
+  color: #fff;
+  padding: 5px;
+  border-radius: 50px;
+}

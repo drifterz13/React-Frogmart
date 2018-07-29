@@ -1,0 +1,26 @@
+[
+  {
+    "productName": "FOG denim",
+    "price": 999,
+    "amount": 99,
+    "imageUrl": "https://static-buyma-jp.akamaized.net/imgdata/item/170316/0027111941/428_1.jpg"
+  },
+  {
+    "productName": "Indigoskin denim",
+    "price": 888,
+    "amount": 99,
+    "imageUrl": "http://topicstock.pantip.com/woman/topicstock/2010/05/Q9283587/Q9283587-46.jpg"
+  },
+  {
+    "productName": "APC denim",
+    "price": 888,
+    "amount": 99,
+    "imageUrl": "https://pocketsquares.files.wordpress.com/2010/03/apcnsbreakinday110.jpg?w=400&h=600"
+  },
+  {
+    "productName": "Nudie jeans",
+    "price": 888,
+    "amount": 99,
+    "imageUrl": "https://cdn.nudiejeans.com/img/Thin-Finn-Ecru-Embo-110268-52_800x800.jpg"
+  }
+]

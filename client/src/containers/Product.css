@@ -1,0 +1,10 @@
+.product-wrapped {
+  display: flex;
+  list-style: none;
+  padding: 0px;
+}
+
+.prodcut-list {
+  display: flex;
+  justify-content: center;
+}

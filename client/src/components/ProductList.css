@@ -1,0 +1,52 @@
+.product-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.card > img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card > img:hover {
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card-body > span {
+  color: slategray;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.card-body > div > span {
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.card-body > div > a > i {
+  cursor: pointer;
+  color: #222;
+  transition: 0.3s;
+}
+
+.card-body > div > a > i:hover {
+  color: #007bff;
+  transition: 0.3s;
+}
