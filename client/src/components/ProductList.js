@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProductList.css'
+import '../assets/css/ProductList.css'
 
 const ProductList = ({product, ...props}) => {
   const { productName, imageUrl, price } = product

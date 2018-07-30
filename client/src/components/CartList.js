@@ -1,5 +1,5 @@
 import React from 'react'
-import './CartList.css'
+import '../assets/css/CartList.css'
 
 const CartList = ({order}) => {
   const { productName, price, imageUrl } = order

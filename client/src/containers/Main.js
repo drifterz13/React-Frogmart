@@ -9,7 +9,7 @@ const divStyle = {
   height: '100vh',
   maxHeight: '100%',
   overflow: 'auto',
-  backgroundColor: '#efefef'
+  backgroundColor: '#fff'
 }
 
 const Main = (props) => (

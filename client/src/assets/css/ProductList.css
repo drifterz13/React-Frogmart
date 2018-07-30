@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 
-.card-body > span {
+.card-body > span:first {
   color: slategray;
   font-size: 14px;
   font-weight: 500;

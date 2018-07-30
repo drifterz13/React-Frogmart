@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/ecom', {
+mongoose.connect('mongodb://zencha:dsp41313@ds259351.mlab.com:59351/ecom', {
   useNewUrlParser: true
 })
 mongoose.Promise = Promise

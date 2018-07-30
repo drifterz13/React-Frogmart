@@ -17,8 +17,10 @@ const addProduct = (product) => {
 
 export const getProducts = () => {
   return dispatch => {
-    return api('assets/db.json').product.getAll().then(res => {
+    const url = 'http://localhost:5000/api/products'
+    return api(url).product.getAll().then(res => {
       const products = res.data
+      console.log(products)
       dispatch(fetchProduct(products))
     })
   }
