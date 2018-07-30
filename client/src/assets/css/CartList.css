@@ -1,4 +1,8 @@
-.cart-wrapped > img {
+div.cart-wrapped {
+  cursor: auto;
+}
+
+.cart-wrapped > div > img {
   width: 140px;
   height: 140px;
   object-fit: contain;
@@ -23,4 +27,13 @@
 .cart-detail p {
   font-weight: 500;
   text-align: right;
+}
+
+.plus, .minus {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0px;
+  color: salmon;
+  cursor: pointer;
+  padding: 3px;
 }

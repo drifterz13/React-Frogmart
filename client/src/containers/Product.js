@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../stores/actions/product'
+import { getProducts } from '../stores/actions/product'
+import { addProductToCart, plusProduct } from '../stores/actions/cart'
 import ProductList from '../components/ProductList'
 import '../assets/css/Product.css'
 
@@ -16,14 +17,19 @@ class Product extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.products !== this.props.products) {
       const products = this.props.products.map(p => ({ ...p }))
-      console.log(products)
       this.setState({ products })
     }
   }
 
   addToCart(product) {
     console.log('Product: ', product)
-    this.props.addProductToCart(product)
+    const haveProduct = this.props.cart.find(p => p._id === product._id)
+    if (haveProduct) {
+      this.props.plusProduct(product._id)
+    } else {
+      const cartProduct = {...product, amount: 1}
+      this.props.addProductToCart(cartProduct)
+    }
     this.props.history.push('/cart')
   }
 
@@ -42,8 +48,9 @@ class Product extends Component {
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    products: state.products,
+    cart: state.cart
   }
 }
 
-export default connect(mapStateToProps, actions)(Product)
+export default connect(mapStateToProps, { getProducts, addProductToCart, plusProduct })(Product)

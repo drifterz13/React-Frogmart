@@ -29,7 +29,6 @@ exports.signup = async function (req, res, next) {
       token
     })
   } catch (err) {
-    console.log(err)
     return next(err)
   }
 }

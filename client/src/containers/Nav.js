@@ -6,6 +6,7 @@ import '../assets/css/Nav.css'
 class Nav extends Component {
   render() {
     const { cart } = this.props
+    const order = cart.reduce((acc, cur) => acc + cur.amount, 0)
     return (
       <nav className='navbar navbar-light fixed-top'>
         <div className='container'>
@@ -23,8 +24,8 @@ class Nav extends Component {
             <li className='nav-item'>
               <Link className='nav-link' to='/cart'>
                 <i className='fas fa-shopping-cart mr-2'></i>
-                {cart.length > 0 && (
-                  <span className='badge badge-warning'>{cart.length}</span>
+                {order > 0 && (
+                  <span className='badge badge-warning'>{order}</span>
                 )}
               </Link>
             </li>
