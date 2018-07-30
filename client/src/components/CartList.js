@@ -23,7 +23,7 @@ const CartList = ({ order, editAmount }) => {
           <h5>{productName}</h5>
           <p>THB {price}</p>
         </div>
-        <p style={{ textAlign: 'right' }}>Remove</p>
+        <p style={{ textAlign: 'right', marginBottom: '9px' }}>Remove</p>
       </div>
     </div>
   )
