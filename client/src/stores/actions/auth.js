@@ -20,7 +20,9 @@ export const auth = (type, credential) => {
     return api(url).user.auth(credential).then(res => {
       localStorage.token = res.data.token
       dispatch(login(res.data))
-    }) 
+    }).catch(err => {
+      return Promise.reject(err.response.data.error)
+    })
   }
 }
 
