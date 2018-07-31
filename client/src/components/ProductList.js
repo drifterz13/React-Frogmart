@@ -13,10 +13,10 @@ const ProductList = ({product, ...props}) => {
           />
         <div className='card-body'>
           <div>
-            <span className='lead'>{productName}</span>
+            <span>{productName}</span>
             <i onClick={() => props.addToCart(product)} className="fas fa-cart-plus"></i>
           </div>
-          <span>{price} THB</span>
+          <span style={{fontSize: '14px'}} className='fomt-weight-light'>{price} THB</span>
         </div>
       </div> 
     </div>

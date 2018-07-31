@@ -4,6 +4,10 @@ nav.navbar {
   border-bottom: 1px solid #efefef;
 }
 
+.nav-link {
+  cursor: pointer;
+}
+
 .navbar-nav {
   flex-direction: row;
 }

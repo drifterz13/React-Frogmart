@@ -35,10 +35,10 @@
   font-weight: 500;
 }
 
-.card-body > div > span {
+/* .card-body > div > span {
   font-weight: 500;
   font-size: 1.15rem;
-}
+} */
 
 .card-body > div > i {
   cursor: pointer;

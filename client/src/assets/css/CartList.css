@@ -1,5 +1,13 @@
 div.cart-wrapped {
   cursor: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+div.cart-wrapped > .cart-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cart-wrapped > div > img {
@@ -10,14 +18,14 @@ div.cart-wrapped {
 
 .cart-detail {
   display: flex;
-  flex-direction: column;
+  width: 100%;
   justify-content: space-between;
-  align-self: stretch;
+  align-items: center;
 }
 
-.cart-detail > div > p {
+/* .cart-detail > div > p {
   color: #777;
-}
+} */
 
 .cart-detail > p {
   color: #f24f3a;
@@ -36,4 +44,10 @@ div.cart-wrapped {
   color: salmon;
   cursor: pointer;
   padding: 3px;
+}
+
+@media screen and (max-width: 715px) {
+  .checkout-main > div {
+    font-size: 15px;
+  }
 }

@@ -3,6 +3,8 @@ import { Route, withRouter, Switch } from 'react-router-dom'
 import Home from '../components/Home'
 import Product from './Product'
 import Cart from './Cart'
+import AuthForm from './AuthForm'
+import { withAuth } from '../hoc/AuthHoc'
 import Nav from './Nav'
 
 const divStyle = {
@@ -14,11 +16,13 @@ const divStyle = {
 
 const Main = (props) => (
   <div style={divStyle}>
-    <Nav />
+    <Nav {...props} />
     <Switch>
       <Route exact path='/' render={() => <Home {...props} />} />
-      <Route exact path='/product' render={() => <Product {...props} />} />
-      <Route exact path='/cart' render={() => <Cart {...props} />} />
+      <Route exact path='/product' component={withAuth(Product)} />
+      <Route exact path='/cart' component={withAuth(Cart)} />
+      <Route exact path='/signup' render={() => <AuthForm type='signup' {...props} />} />
+      <Route exact path='/signin' render={() => <AuthForm type='signin' {...props} />} />
     </Switch>
   </div>
 )

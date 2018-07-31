@@ -5,8 +5,8 @@ import '../assets/css/Checkout.css'
 
 const Checkout = ({amount, totalPrice}) => {
   return (
-    <div className='row justify-content-center mb-5'>
-      <div className='card col-md-6'>
+    <div className='row justify-content-center mb-5' style={{flexWrap: 'wrap'}}>
+      <div className='card col-6 checkout-wrapped'>
         <div className='card-body checkout-body'>
           <div className='checkout-main mb-3'>
           <NumberFormat 
@@ -30,7 +30,7 @@ const Checkout = ({amount, totalPrice}) => {
                 </Fragment>
               )} />
           </span>
-          <div>
+          <div className='checkout-button-wrapped'>
             <Link to='/product' className='btn btn-light mr-3'>Continue shopping</Link>
             <button type='button' className='btn btn-primary'>Proceed to checkout</button>
           </div>
