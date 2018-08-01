@@ -7,6 +7,15 @@ export default function(url) {
     },
     product: {
       getAll: () => axios.get(url)
+    },
+    order: {
+      confirmOrder: order => {
+        return axios.post(url, order)
+      },
+      getOrderHistory: () => {
+        axios.defaults.headers['Authorization'] = `Bearer ${localStorage.token}`
+        return axios.get(url)
+      }
     }
   }
 }

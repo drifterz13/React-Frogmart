@@ -13,7 +13,8 @@ if (localStorage.token) {
   store.dispatch(login({
     username: user.username,
     email: user.email,
-    token: user.token
+    token: localStorage.token,
+    _id: user._id
   }))
 }
 

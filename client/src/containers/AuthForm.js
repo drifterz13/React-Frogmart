@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { auth } from '../stores/actions/auth';
 
+const initialState = {
+  user: {
+    username: '',
+    email: '',
+    password: ''
+  },
+  errors: null
+}
 class AuthForm extends Component {
-  state = {
-    user: {
-      username: '',
-      email: '',
-      password: ''
-    },
-    errors: null
-  };
+  state = initialState
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.type !== this.props.type) {
+      this.setState(initialState)
+    }
+  }
 
   handleChange = e => {
     this.setState({
@@ -44,12 +51,15 @@ class AuthForm extends Component {
         <div className='row justify-content-center'>
           <div className='col-md-6 col-sm-12'>
             <form onSubmit={this.handleSubmit}>
+              {errors && (
+                <div className='alert alert-danger text-center p-1'>{errors.message}</div>
+              )}
               {this.props.type === 'signup' && (
                 <div className='form-group'>
                   <label htmlFor='username'>Username</label>
                   <input
                     type='text'
-                    className='form-control'
+                    className={errors ? 'form-control is-invalid' : 'form-control'}
                     name='username'
                     id='username'
                     value={username}
@@ -61,7 +71,7 @@ class AuthForm extends Component {
                 <label htmlFor='email'>Email</label>
                 <input
                   type='email'
-                  className='form-control'
+                  className={errors ? 'form-control is-invalid' : 'form-control'}
                   name='email'
                   id='email'
                   value={email}
@@ -72,7 +82,7 @@ class AuthForm extends Component {
                 <label htmlFor='password'>Password</label>
                 <input
                   type='password'
-                  className='form-control'
+                  className={errors ? 'form-control is-invalid' : 'form-control'}
                   name='password'
                   id='password'
                   value={password}

@@ -44,9 +44,12 @@ div.checkout-button-wrapped > a {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
   .checkout-wrapped {
     min-width: 100%;
   }
-
+  .checkout-button-wrapped {
+    flex-direction: column;
+    margin: 0 auto;
+  }
 }

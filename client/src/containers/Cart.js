@@ -33,6 +33,27 @@ class Cart extends Component {
     type === 'plus' ? this.props.plusProduct(id) : this.props.minusProduct(id)
   }
 
+  confirmOrder() {
+    const order = []
+    this.props.cart.forEach(item => {
+      order.push({
+        productId: item._id,
+        amount: item.amount,
+        price: item.price
+      })
+    })
+    const totalPrice = order.reduce((acc, cur) => acc + (cur.price * cur.amount), 0)
+    const payload = {
+      order,
+      user: this.props.user._id,
+      totalPrice
+    }
+    console.log('payload', payload)
+    this.props.submitOrder(payload).then(() => {
+      this.props.history.push('/')
+    })
+  }
+
   render() {
     const { cart, totalPrice, totalItem } = this.state
     return (
@@ -46,7 +67,11 @@ class Cart extends Component {
             </div>
           ))}
         </div>
-        <Checkout amount={totalItem} totalPrice={totalPrice} />
+        <Checkout 
+          amount={totalItem} 
+          totalPrice={totalPrice} 
+          confirm={() => this.confirmOrder()}
+          />
       </div>
     )
   }
@@ -54,7 +79,8 @@ class Cart extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart
+    cart: state.cart,
+    user: state.auth.user
   }
 }
 

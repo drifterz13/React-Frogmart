@@ -13,50 +13,61 @@ class Nav extends Component {
   }
 
   render() {
-    const { cart } = this.props
+    const { cart, user } = this.props
     const order = cart.reduce((acc, cur) => acc + cur.amount, 0)
     return (
-      <nav className='navbar navbar-light fixed-top'>
+      <nav className='navbar navbar-expand-lg navbar-light fixed-top'>
         <div className='container'>
           <Link className='navbar-brand' to='/'>
-            <i className='fas fa-frog mr-2'></i>
             FrogMart
           </Link>
-          <ul className='navbar-nav'>
-            {!this.props.isAuthenticated ? (
-              <Fragment>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/signup'>
-                    <i className='fas fa-user-plus mr-1'></i>
-                    Sign up
-                  </Link>
-                </li>
-                <li className='navbar-item'>
-                  <Link className='nav-link' to='signin'>
-                    <i className='fas fa-sign-in-alt mr-1'></i>
-                    Sign in
-                  </Link>
-                </li>
-              </Fragment>
-            ) : (
-              <Fragment>
-                <li className='nav-item'>
-                  <Link className='nav-link' to='/cart'>
-                    <i className='fas fa-shopping-cart mr-2'></i>
-                    {order > 0 && (
-                      <span className='badge badge-warning'>{order}</span>
-                    )}
-                  </Link>
-                </li>
-                <li className='nav-item'>
-                  <a className='nav-link' onClick={this.loggedOut}>
-                    <i className='fas fa-sign-out-alt mr-1'></i>
-                    Logout
-                  </a>
-                </li>
-              </Fragment>
-            )}
-          </ul>
+          <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent'>
+            <span className='navbar-toggler-icon'></span>
+          </button>
+
+          <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav ml-auto'>
+              {!this.props.isAuthenticated ? (
+                <Fragment>
+                  <li className='nav-item'>
+                    <Link className='nav-link' to='/signup'>
+                      <i className='fas fa-user-plus mr-1'></i>
+                      Sign up
+                    </Link>
+                  </li>
+                  <li className='navbar-item'>
+                    <Link className='nav-link' to='signin'>
+                      <i className='fas fa-sign-in-alt mr-1'></i>
+                      Sign in
+                    </Link>
+                  </li>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <li className='nva-item'>
+                    <Link className='nav-link' to='/profile'>
+                      <i className='fas fa-user-ninja mr-1'></i>
+                      {user.username}
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <Link className='nav-link' to='/cart'>
+                      <i className='fas fa-shopping-cart mr-2'></i>
+                      {order > 0 && (
+                        <span className='badge badge-warning'>{order}</span>
+                      )}
+                    </Link>
+                  </li>
+                  <li className='nav-item'>
+                    <a className='nav-link' onClick={this.loggedOut}>
+                      <i className='fas fa-sign-out-alt mr-1'></i>
+                      Logout
+                    </a>
+                  </li>
+                </Fragment>
+              )}
+            </ul>
+          </div>
         </div>
       </nav>
     )
@@ -66,7 +77,8 @@ class Nav extends Component {
 function mapStateToProps(state) {
   return {
     cart: state.cart,
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
   }
 }
 

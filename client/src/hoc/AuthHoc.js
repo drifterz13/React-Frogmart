@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 export const withAuth = WrappedComponent => {
   class EnhancedComponent extends Component {
-    componentDidMount() {
-      if (!this.props.isAuthenticated) {
-        this.props.history.push('/signin')
-      }
-    }
-
     render() {
+      if (!this.props.isAuthenticated) {
+        return <Redirect to='/signin' />
+      }
       return <WrappedComponent {...this.props} />
     }
   }

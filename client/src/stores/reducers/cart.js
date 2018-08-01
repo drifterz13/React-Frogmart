@@ -1,4 +1,4 @@
-import { ADD_TO_CART, PLUS_ITEM, MINUS_ITEM } from '../../types'
+import { ADD_TO_CART, PLUS_ITEM, MINUS_ITEM, LOGGED_OUT, SUBMIT_ORDER } from '../../types'
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -20,6 +20,10 @@ export default function(state = [], action) {
         }
         return product
       })
+    case LOGGED_OUT:
+      return []
+    case SUBMIT_ORDER:
+      return []
     default:
       return state
   }
