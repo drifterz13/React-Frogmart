@@ -16,7 +16,7 @@ div.checkout-main, span.checkout-main {
 
 .checkout-border {
   border-bottom: 1px solid #efefef;
-  width: 90%;
+  width: 100%;
 }
 
 div.checkout-button-wrapped > a {
