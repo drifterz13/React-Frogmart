@@ -16,6 +16,9 @@ export default function(url) {
         axios.defaults.headers['Authorization'] = `Bearer ${localStorage.token}`
         return axios.get(url)
       }
+    },
+    payment: {
+      checkout: info => axios.post(url, info)
     }
   }
 }

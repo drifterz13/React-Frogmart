@@ -5,9 +5,13 @@ import PaymentModal from './PaymentModal'
 import '../assets/css/Checkout.css'
 
 class Checkout extends Component {
+  handleCheckout = e => {
+    this.props.confirm()
+    console.log('Success Checkout!')
+  }
 
   render() {
-    const { amount, totalPrice, confirm } = this.props
+    const { amount, totalPrice } = this.props
     return (
       <div className='row justify-content-center mb-5' style={{ flexWrap: 'wrap' }}>
         <div className='card col-6 checkout-wrapped'>
@@ -39,7 +43,7 @@ class Checkout extends Component {
               <button
                 type='button'
                 data-toggle="modal" 
-                data-target="#exampleModal"
+                data-target="#checkoutModal"
                 className='btn btn-primary'
                 // onClick={() => confirm()}
               >
@@ -47,7 +51,7 @@ class Checkout extends Component {
             </div>
           </div>
         </div>
-        <PaymentModal />
+        <PaymentModal checkout={this.handleCheckout} />
       </div>
 
     )

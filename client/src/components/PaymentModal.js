@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import api from '../services/api'
 
 class PaymentModal extends Component {
-  state = {}
+  state = {
+    errros: null
+  }
 
   handleSubmit = e => {
     e.preventDefault()
@@ -18,20 +21,30 @@ class PaymentModal extends Component {
     Omise.createToken('card', cardObject, (statusCode, response) => {
       if (statusCode === 200) {
         console.log(response)
+        const payload = {tokenId: response.id}
+        const url = 'http://localhost:5000/api/checkout'
         checkoutForm.omiseToken.value = response.id
+        api(url).payment.checkout(payload).then(res => {
+          const { $ } = window
+          $('#checkoutModal').modal('toggle')
+          this.props.checkout()
+        })
       } else {
-        console.log(response.message)
+        const cutMessage = response.message.split(',')[0]
+        this.setState({ errors: cutMessage })
       }
     })
   }
 
   render () {
+    const { errors } = this.state
+    const formClass = errors ? 'form-control is-invalid' : 'form-control'
     return (
-      <div className='modal fade' id='exampleModal' tabIndex='-1'>
-        <div className='modal-dialog' role='document'>
+      <div className='modal fade' id='checkoutModal' tabIndex='-1'>
+        <div className='modal-dialog'>
           <div className='modal-content'>
             <div className='modal-header' style={{backgroundColor: '#fbfbfb'}}>
-              <h5 className='modal-title' id='exampleModalLabel'>FrogMart Payment</h5>
+              <h5 className='modal-title'>FrogMart Payment</h5>
               <button type='button' className='close' data-dismiss='modal' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
@@ -43,13 +56,16 @@ class PaymentModal extends Component {
                 <img src='http://bootstrap-ecommerce.com/main/images/icons/pay-american-ex.png' alt='american-ex' />
               </p>
               <form id='checkout-form' onSubmit={this.handleSubmit} >
+                {errors && (
+                  <div className='alert alert-danger text-center p-1'>{errors}</div>
+                )}
                 <div className='form-group'>
                   <label>Name on card</label>
                   <div className='input-group-prepend'>
                     <span className='input-group-text'>
                       <i className='fa fa-user'></i>
                     </span>
-                    <input type='text' data-name='nameOnCard' className='form-control' placeholder='Full Name' />
+                    <input type='text' data-name='nameOnCard' className={formClass} placeholder='Full Name' />
                   </div>
                 </div>
 
@@ -61,7 +77,7 @@ class PaymentModal extends Component {
                         <i className='fa fa-credit-card'></i>
                       </span>
                     </div>
-                    <input type='text' data-name='cardNumber' className='form-control' placeholder='••••••••••••••••' />
+                    <input type='text' data-name='cardNumber' className={formClass} placeholder='••••••••••••••••' />
                     </div>
                 </div>
 
@@ -72,7 +88,7 @@ class PaymentModal extends Component {
                         <span className='hidden-xs'>Expiration</span>
                       </label>
                       <div className='form-inline'>
-                        <select className='form-control' data-name='expiryMonth' style={{width: '45%'}}>
+                        <select className={formClass} data-name='expiryMonth' style={{width: '45%'}}>
                           <option value=''>MM</option>
                           <option value='1'>1</option>
                           <option value='2'>2</option>
@@ -88,7 +104,7 @@ class PaymentModal extends Component {
                           <option value='12'>12</option>
                         </select>
                         <span style={{width: '10%', textAlign: 'center'}}> / </span>
-                        <select className='form-control' data-name='expiryYear' style={{ width: '45%' }}>
+                        <select className={formClass} data-name='expiryYear' style={{ width: '45%' }}>
                           <option value=''>YYYY</option>
                           <option value='2018'>2018</option>
                           <option value='2019'>2019</option>
@@ -108,7 +124,7 @@ class PaymentModal extends Component {
                         CVV
                         <i className='fa fa-question-circle'></i>
                       </label>
-                      <input type='text' data-name='securityCode' className='form-control' />
+                      <input type='text' data-name='securityCode' className={formClass} />
                     </div>
                   </div>
                 </div>

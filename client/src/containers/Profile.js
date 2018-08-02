@@ -19,7 +19,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='container' style={{ marginTop: '100px' }}>
         <div className='row justify-content-center'>
