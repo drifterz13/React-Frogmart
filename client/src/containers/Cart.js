@@ -50,7 +50,7 @@ class Cart extends Component {
     }
     console.log('payload', payload)
     this.props.submitOrder(payload).then(() => {
-      this.props.history.push('/')
+      this.props.history.push('/success')
     })
   }
 

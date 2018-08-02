@@ -5,7 +5,8 @@ import ProfileHistory from '../components/ProfileHistory'
 
 class Profile extends Component {
   state = {
-    orderHistory: []
+    orderHistory: [],
+    errors: null
   };
 
 
@@ -15,7 +16,10 @@ class Profile extends Component {
       .order.getOrderHistory()
       .then(res => {
         this.setState({ orderHistory: [...this.state.orderHistory, ...res.data] })
-      });
+      })
+      .catch(err => {
+        this.setState({ errors: err.response.data })
+      })
   }
 
   render() {
@@ -23,6 +27,9 @@ class Profile extends Component {
       <div className='container' style={{ marginTop: '100px' }}>
         <div className='row justify-content-center'>
           <div className='col-md-8 col-sm-12'>
+            {this.state.errors && (
+              <div className='alert alert-warning text-center p-1'>{this.state.errors.message}</div>
+            )}
             {this.state.orderHistory.map((order, i) => (
               <ProfileHistory key={i} orderList={order} />
             ))}

@@ -24,7 +24,7 @@ class PaymentModal extends Component {
         const payload = {tokenId: response.id}
         const url = 'http://localhost:5000/api/checkout'
         checkoutForm.omiseToken.value = response.id
-        api(url).payment.checkout(payload).then(res => {
+        api(url).payment.checkout(payload).then(() => {
           const { $ } = window
           $('#checkoutModal').modal('toggle')
           this.props.checkout()

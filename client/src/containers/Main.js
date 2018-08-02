@@ -5,6 +5,7 @@ import Product from './Product'
 import Cart from './Cart'
 import AuthForm from './AuthForm'
 import Profile from './Profile'
+import Success from '../components/Success'
 import { withAuth } from '../hoc/AuthHoc'
 import Nav from './Nav'
 
@@ -20,11 +21,12 @@ const Main = (props) => (
     <Nav {...props} />
     <Switch>
       <Route exact path='/' render={() => <Home {...props} />} />
-      <Route exact path='/product' component={withAuth(Product)} />
-      <Route exact path='/cart' component={withAuth(Cart)} />
-      <Route exact path='/signup' render={() => <AuthForm type='signup' {...props} />} />
-      <Route exact path='/signin' render={() => <AuthForm type='signin' {...props} />} />
-      <Route exact path='/profile' component={withAuth(Profile)} />
+      <Route path='/product' component={withAuth(Product)} />
+      <Route path='/cart' component={withAuth(Cart)} />
+      <Route path='/signup' render={() => <AuthForm type='signup' {...props} />} />
+      <Route path='/signin' render={() => <AuthForm type='signin' {...props} />} />
+      <Route path='/profile' component={withAuth(Profile)} />
+      <Route path='/success' component={Success} />
     </Switch>
   </div>
 )
