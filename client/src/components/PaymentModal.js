@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import Loader from 'react-loader'
 import api from '../services/api'
 
 class PaymentModal extends Component {
   state = {
-    errros: null
+    errros: null,
+    loaded: true
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const checkoutForm = document.getElementById('checkout-form')
+    this.setState({ loaded: false })
     const { Omise } = window
     Omise.setPublicKey('pkey_test_5csoj7uqs1o8uhko7r6')
     const cardObject = {
@@ -23,8 +25,8 @@ class PaymentModal extends Component {
         console.log(response)
         const payload = {tokenId: response.id}
         const url = 'http://localhost:5000/api/checkout'
-        checkoutForm.omiseToken.value = response.id
         api(url).payment.checkout(payload).then(() => {
+          this.setState({ loaded: true })
           const { $ } = window
           $('#checkoutModal').modal('toggle')
           this.props.checkout()
@@ -37,10 +39,12 @@ class PaymentModal extends Component {
   }
 
   render () {
-    const { errors } = this.state
+    const { errors, loaded } = this.state
     const formClass = errors ? 'form-control is-invalid' : 'form-control'
+    const modalStyle = loaded ? { zIndex: '' } : { zIndex: 'auto' }
     return (
-      <div className='modal fade' id='checkoutModal' tabIndex='-1'>
+      <div className='modal fade' style={modalStyle} id='checkoutModal' tabIndex='-1'>
+        <Loader loaded={loaded} color='#2d7df6' />
         <div className='modal-dialog'>
           <div className='modal-content'>
             <div className='modal-header' style={{backgroundColor: '#fbfbfb'}}>

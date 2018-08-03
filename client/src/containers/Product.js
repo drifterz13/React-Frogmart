@@ -3,21 +3,24 @@ import { connect } from 'react-redux'
 import { getProducts } from '../stores/actions/product'
 import { addProductToCart, plusProduct } from '../stores/actions/cart'
 import ProductList from '../components/ProductList'
+import Loader from 'react-loader'
 import '../assets/css/Product.css'
 
 class Product extends Component {
   state = {
-    products: []
+    products: [],
+    loaded: true
   }
 
   componentDidMount() {
+    this.setState({ loaded: false })
     this.props.getProducts()
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.products !== this.props.products) {
       const products = this.props.products.map(p => ({ ...p }))
-      this.setState({ products })
+      this.setState({ products, loaded: true })
     }
   }
 
@@ -36,6 +39,7 @@ class Product extends Component {
   render() {
     return (
       <div className='container'>
+        <Loader loaded={this.state.loaded} color='#2d7df6'/>
         <ul className='product-wrapped row'>
           {this.state.products.map((p, i) => (
             <ProductList key={i} product={p} addToCart={product => this.addToCart(product)} />

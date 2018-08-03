@@ -1,4 +1,4 @@
-import { ADD_TO_CART, PLUS_ITEM, MINUS_ITEM, LOGGED_OUT, SUBMIT_ORDER } from '../../types'
+import { ADD_TO_CART, PLUS_ITEM, MINUS_ITEM, LOGGED_OUT, SUBMIT_ORDER, REMOVE_FROM_CART } from '../../types'
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -20,6 +20,8 @@ export default function(state = [], action) {
         }
         return product
       })
+    case REMOVE_FROM_CART:
+      return state.filter(item => item._id !== action.id)
     case LOGGED_OUT:
       return []
     case SUBMIT_ORDER:

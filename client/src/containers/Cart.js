@@ -33,6 +33,9 @@ class Cart extends Component {
     type === 'plus' ? this.props.plusProduct(id) : this.props.minusProduct(id)
   }
 
+  removeItem = id => this.props.removeFromCart(id);
+  
+
   confirmOrder() {
     const order = []
     this.props.cart.forEach(item => {
@@ -62,7 +65,10 @@ class Cart extends Component {
           {cart.map(c => (
             <div key={c._id} className='card col-md-8 mb-3'>
               <div className='card-body col-md-4 cart-item-body'>
-                <CartList order={c} editAmount={(type, id) => this.configAmount(type, id)}/>
+                <CartList 
+                  order={c} 
+                  removeItem={id => this.removeItem(id)}
+                  editAmount={(type, id) => this.configAmount(type, id)}/>
               </div>
             </div>
           ))}

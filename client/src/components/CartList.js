@@ -1,7 +1,8 @@
 import React from 'react'
+import NumberFormat from 'react-number-format'
 import '../assets/css/CartList.css'
 
-const CartList = ({ order, editAmount }) => {
+const CartList = ({ order, editAmount, removeItem }) => {
   const { productName, price, imageUrl, amount, _id } = order
   return (
     <div className='cart-wrapped'>
@@ -13,7 +14,12 @@ const CartList = ({ order, editAmount }) => {
         />
         <div>
           <h5>{productName}</h5>
-          <p className='text-right'>THB {price}</p>
+          <NumberFormat
+              value={price}
+              displayType={'text'}
+              thousandSeparator={true}
+              renderText={value => <p className='text-right'>THB {value}</p>}
+              />
         </div>
       </div>
       <div className='cart-detail'>
@@ -23,7 +29,7 @@ const CartList = ({ order, editAmount }) => {
           <p className='ml-2 mb-0' style={{ fontWeight: '500' }}>{amount}</p>
           <p className='minus ml-2' onClick={() => editAmount('minus', _id)}>-</p>
         </span>
-        <p className='text-right mb-0'>Remove</p>
+        <p className='text-right mb-0' style={{cursor: 'pointer'}} onClick={() => removeItem(_id)}>Remove</p>
       </div>
     </div>
   )

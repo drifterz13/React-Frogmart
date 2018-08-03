@@ -34,7 +34,7 @@ class Checkout extends Component {
                 prefix={'THB '}
                 renderText={value => (
                   <Fragment>
-                    <h5 className='mr-2'>Total:</h5> <h5 style={{ fontStyle: 'italic' }}>{value}</h5>
+                    <h5 className='mr-2'>Total:</h5> <h5>{value}</h5>
                   </Fragment>
                 )} />
             </span>
