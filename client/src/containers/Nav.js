@@ -12,6 +12,10 @@ class Nav extends Component {
     this.props.history.push('/')
   }
 
+  toggleNav = () => {
+    document.querySelector('.navbar-toggler').click()
+  }
+
   render() {
     const { cart, user } = this.props
     const order = cart.reduce((acc, cur) => acc + cur.amount, 0)
@@ -26,16 +30,24 @@ class Nav extends Component {
           </button>
 
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul className='navbar-nav'>
+              <li className='nav-item' onClick={this.toggleNav}>
+                <Link className='nav-link' to='/product'>
+                  <i className='fas fa-tshirt mr-1'></i>
+                  Product
+                </Link>
+              </li>
+            </ul>
             <ul className='navbar-nav ml-auto'>
               {!this.props.isAuthenticated ? (
                 <Fragment>
-                  <li className='nav-item'>
+                  <li className='nav-item' onClick={this.toggleNav}>
                     <Link className='nav-link' to='/signup'>
                       <i className='fas fa-user-plus mr-1'></i>
                       Sign up
                     </Link>
                   </li>
-                  <li className='navbar-item'>
+                  <li className='navbar-item' onClick={this.toggleNav}>
                     <Link className='nav-link' to='signin'>
                       <i className='fas fa-sign-in-alt mr-1'></i>
                       Sign in
@@ -44,13 +56,13 @@ class Nav extends Component {
                 </Fragment>
               ) : (
                 <Fragment>
-                  <li className='nva-item'>
+                  <li className='nav-item' onClick={this.toggleNav}>
                     <Link className='nav-link' to='/profile'>
                       <i className='fas fa-user-ninja mr-1'></i>
                       {user.username}
                     </Link>
                   </li>
-                  <li className='nav-item'>
+                  <li className='nav-item' onClick={this.toggleNav}>
                     <Link className='nav-link' to='/cart'>
                       <i className='fas fa-shopping-cart mr-2'></i>
                       {order > 0 && (
@@ -58,7 +70,7 @@ class Nav extends Component {
                       )}
                     </Link>
                   </li>
-                  <li className='nav-item'>
+                  <li className='nav-item' onClick={this.toggleNav}>
                     <a className='nav-link' onClick={this.loggedOut}>
                       <i className='fas fa-sign-out-alt mr-1'></i>
                       Logout

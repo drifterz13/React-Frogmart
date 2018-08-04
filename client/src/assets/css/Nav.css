@@ -9,7 +9,8 @@ nav.navbar {
 }
 
 .navbar-nav {
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .navbar-nav > li {
