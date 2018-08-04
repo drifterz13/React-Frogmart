@@ -38,7 +38,7 @@ class PaymentModal extends Component {
         })
       } else {
         const cutMessage = response.message.split(',')[0]
-        this.setState({ errors: cutMessage })
+        this.setState({ errors: cutMessage, loaded: true })
       }
     })
   }
@@ -86,7 +86,7 @@ class PaymentModal extends Component {
                         <i className='fa fa-credit-card'></i>
                       </span>
                     </div>
-                    <input type='text' data-name='cardNumber' className={formClass} placeholder='••••••••••••••••' />
+                    <input type='text' maxLength='16' data-name='cardNumber' className={formClass} placeholder='••••••••••••••••' />
                     </div>
                 </div>
 

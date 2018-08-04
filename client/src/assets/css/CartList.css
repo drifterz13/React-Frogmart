@@ -50,4 +50,7 @@ div.cart-wrapped > .cart-top {
   .checkout-main > div {
     font-size: 15px;
   }
+  h5 {
+    font-size: 1rem;
+  }
 }
