@@ -8,6 +8,11 @@ class PaymentModal extends Component {
     loaded: true
   }
 
+  handleTooltip = () => {
+    const { $ } = window
+    $('[data-toggle="tooltip"]').tooltip()
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     this.setState({ loaded: false })
@@ -124,7 +129,7 @@ class PaymentModal extends Component {
                   </div>
                   <div className='col-sm-4'>
                     <div className='form-group'>
-                      <label data-toggle='tooltip' title='' data-original-title='3 digits code on back side of the card'>
+                      <label onMouseEnter={this.handleTooltip} data-toggle='tooltip' title='' data-original-title='3 digits code on back side of the card'>
                         CVV
                         <i className='fa fa-question-circle'></i>
                       </label>

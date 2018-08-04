@@ -23,9 +23,9 @@ div.cart-wrapped > .cart-top {
   align-items: center;
 }
 
-/* .cart-detail > div > p {
-  color: #777;
-} */
+#remove:hover {
+  color: red;
+}
 
 .cart-detail > p {
   color: #f24f3a;

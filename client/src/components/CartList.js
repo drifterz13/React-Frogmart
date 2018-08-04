@@ -15,11 +15,11 @@ const CartList = ({ order, editAmount, removeItem }) => {
         <div>
           <h5>{productName}</h5>
           <NumberFormat
-              value={price}
-              displayType={'text'}
-              thousandSeparator={true}
-              renderText={value => <p className='text-right'>THB {value}</p>}
-              />
+            value={price}
+            displayType={'text'}
+            thousandSeparator={true}
+            renderText={value => <p className='text-right'>THB {value}</p>}
+            />
         </div>
       </div>
       <div className='cart-detail'>
@@ -29,7 +29,13 @@ const CartList = ({ order, editAmount, removeItem }) => {
           <p className='ml-2 mb-0' style={{ fontWeight: '500' }}>{amount}</p>
           <p className='minus ml-2' onClick={() => editAmount('minus', _id)}>-</p>
         </span>
-        <p className='text-right mb-0' style={{cursor: 'pointer'}} onClick={() => removeItem(_id)}>Remove</p>
+        <p 
+          id='remove'
+          className='text-right mb-0' 
+          style={{cursor: 'pointer'}}
+          onClick={() => removeItem(_id)}>
+          Remove
+        </p>
       </div>
     </div>
   )

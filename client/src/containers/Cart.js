@@ -38,13 +38,15 @@ class Cart extends Component {
 
   confirmOrder() {
     const order = []
-    this.props.cart.forEach(item => {
-      order.push({
-        productId: item._id,
-        amount: item.amount,
-        price: item.price
+    this.props.cart
+      .filter(item => item.amount !== 0)
+      .forEach(item => {
+        order.push({
+          productId: item._id,
+          amount: item.amount,
+          price: item.price
+        })
       })
-    })
     const totalPrice = order.reduce((acc, cur) => acc + (cur.price * cur.amount), 0)
     const payload = {
       order,

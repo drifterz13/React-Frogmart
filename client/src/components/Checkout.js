@@ -5,6 +5,17 @@ import PaymentModal from './PaymentModal'
 import '../assets/css/Checkout.css'
 
 class Checkout extends Component {
+
+  handleTooltip = () => {
+    const { $ } = window
+    if (this.props.totalPrice === 0) {
+      document.getElementById('checkout').addEventListener('mouseleave', function(e) {
+        $('#checkout').tooltip('hide')
+      })
+      $('#checkout').tooltip('toggle')
+    }
+  }
+
   handleCheckout = e => {
     this.props.confirm()
     console.log('Success Checkout!')
@@ -40,14 +51,23 @@ class Checkout extends Component {
             </span>
             <div className='checkout-button-wrapped'>
               <Link to='/product' className='btn btn-light mr-3'>Continue shopping</Link>
-              <button
-                type='button'
-                data-toggle="modal" 
-                data-target="#checkoutModal"
-                className='btn btn-primary'
-                // onClick={() => confirm()}
-              >
-                Proceed to checkout</button>
+              <span 
+                id='checkout' 
+                tabIndex='0' 
+                data-toggle='tooltip' 
+                title={this.props.totalPrice === 0 ? 'You dont have items in your cart' : ''}
+                onMouseEnter={this.handleTooltip}
+                >
+                <button
+                  className='btn btn-primary'
+                  style={totalPrice === 0 ? {cursor: 'not-allowed'} : {}}
+                  disabled={totalPrice === 0 ? true : false}
+                  type='button'
+                  data-toggle='modal'
+                  data-target='#checkoutModal'
+                >
+                  Proceed to checkout</button>
+              </span>
             </div>
           </div>
         </div>

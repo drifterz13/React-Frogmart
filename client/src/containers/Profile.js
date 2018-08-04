@@ -27,6 +27,8 @@ class Profile extends Component {
       <div className='container' style={{ marginTop: '100px' }}>
         <div className='row justify-content-center'>
           <div className='col-md-8 col-sm-12'>
+          <h2 className='lead pb-1' style={{fontWeight: '400'}}>Shopping History</h2>
+          <hr />
             {this.state.errors && (
               <div className='alert alert-warning text-center p-1'>{this.state.errors.message}</div>
             )}
