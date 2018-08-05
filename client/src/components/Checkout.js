@@ -18,7 +18,6 @@ class Checkout extends Component {
 
   handleCheckout = e => {
     this.props.confirm()
-    console.log('Success Checkout!')
   }
 
   render() {

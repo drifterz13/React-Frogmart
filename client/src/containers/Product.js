@@ -25,7 +25,6 @@ class Product extends Component {
   }
 
   addToCart(product) {
-    console.log('Product: ', product)
     const haveProduct = this.props.cart.find(p => p._id === product._id)
     if (haveProduct) {
       this.props.plusProduct(product._id)

@@ -13,7 +13,11 @@ class Nav extends Component {
   }
 
   toggleNav = () => {
-    document.querySelector('.navbar-toggler').click()
+    const { $ } = window
+    const viewport = $(window).width()
+    if (viewport < 995) {
+      document.querySelector('.navbar-toggler').click()
+    }
   }
 
   render() {

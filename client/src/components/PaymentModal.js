@@ -27,7 +27,6 @@ class PaymentModal extends Component {
     }
     Omise.createToken('card', cardObject, (statusCode, response) => {
       if (statusCode === 200) {
-        console.log(response)
         const payload = {tokenId: response.id}
         const url = 'http://localhost:5000/api/checkout'
         api(url).payment.checkout(payload).then(() => {

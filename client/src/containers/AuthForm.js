@@ -38,7 +38,6 @@ class AuthForm extends Component {
         this.props.history.push('/product');
       })
       .catch(err => {
-        console.log('error', err);
         this.setState({ errors: err });
       });
   };

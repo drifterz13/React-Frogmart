@@ -53,7 +53,6 @@ class Cart extends Component {
       user: this.props.user._id,
       totalPrice
     }
-    console.log('payload', payload)
     this.props.submitOrder(payload).then(() => {
       this.props.history.push('/success')
     })
