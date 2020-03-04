@@ -8,7 +8,7 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-loader": "^2.4.5",
     "react-moment": "^0.7.9",
     "react-number-format": "^3.5.0",
